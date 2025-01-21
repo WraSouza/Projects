@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:material="http://schemas.enisn-projects.io/dotnet/maui/uraniumui/material"
+             xmlns:mvvm="clr-namespace:Projects.ViewModels"
+             x:Class="Projects.Views.AddUserPage"
+             x:DataType="mvvm:AddUserViewModel">
+    
+    <VerticalStackLayout Padding="10,0,10,0" Spacing="40">
+
+        <Label Text="Cadastre Seu Usuário" HorizontalOptions="Center" FontSize="20" FontFamily="MontserratSemibold"/>
+
+        <material:TextField Title="Nome" Text="{Binding FullName}"/>
+
+        <material:TextField Title="E-mail" Text="{Binding Email}" />
+
+        <material:TextField Title="Senha" IsPassword="True" Text="{Binding Senha}"/>
+
+        <Button StyleClass="ElevatedButton" Text="Acessar" FontFamily="MontserratSemibold" Margin="0,90,0,0" Command="{Binding AddUserCommand}"/>
+    </VerticalStackLayout>
+</ContentPage>

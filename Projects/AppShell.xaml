@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="Projects.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:Projects"
+    xmlns:views="clr-namespace:Projects.Views">
+    <ShellContent
+        Title="Main"
+        ContentTemplate="{DataTemplate views:LoginPage}"
+        Route="MainPage"
+        Shell.NavBarIsVisible="False" />
+
+    <FlyoutItem Title="Produtos">
+        <Tab>
+            <ShellContent
+                Title="Produtos"
+                ContentTemplate="{DataTemplate views:MainPage}"
+                Route="MainPage"
+                Shell.NavBarIsVisible="True" />
+        </Tab>
+    </FlyoutItem>
+
+    <FlyoutItem Title="Controle Inventário">
+        <Tab>
+            <ShellContent
+                Title="Controle Inventário"
+                ContentTemplate="{DataTemplate views:ProjectsPage}"
+                Route="ProjectsPage"
+                Shell.NavBarIsVisible="True" />
+        </Tab>
+    </FlyoutItem>
+
+</Shell>
