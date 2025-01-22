@@ -30,11 +30,15 @@
             VerticalOptions="Center" />
 
         <StackLayout  VerticalOptions="CenterAndExpand" Padding="10,0,10,20" Spacing="10">
-            <material:TextField Title="Name" Text="{Binding Name}" />
+            <material:TextField Title="Email" Text="{Binding Email}" />
 
             <material:TextField Title="Senha" IsPassword="True" Text="{Binding Senha}"/>
 
-            <Label Text="Esqueceu a Senha?" TextColor="Gray" HorizontalOptions="End" Margin="0,2,0,0"/>
+            <Label Text="Esqueceu a Senha?" TextColor="Gray" HorizontalOptions="End" Margin="0,2,0,0">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding GoToInformEmailPageCommand}"/>
+                </Label.GestureRecognizers>
+            </Label>
 
             <Button StyleClass="ElevatedButton" Text="Acessar" FontFamily="MontserratSemibold" Margin="0,80,0,0" Command="{Binding LoginCommand}"/>
 

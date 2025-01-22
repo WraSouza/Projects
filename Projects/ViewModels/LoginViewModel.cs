@@ -16,6 +16,10 @@ namespace Projects.ViewModels
      => await Shell.Current.GoToAsync(nameof(AddUserPage));
 
         [RelayCommand]
+        public async Task GoToInformEmailPage()
+    => await Shell.Current.GoToAsync(nameof(InformEmailPage));
+
+        [RelayCommand]
         public async Task Login()
         {
             LoginRequest login = new LoginRequest(email, senha);
