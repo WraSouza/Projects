@@ -10,5 +10,22 @@ namespace Projects.Repositories.Login
         {
             return await SitesURL.userLoginAPI.GetJsonAsync<LoginResponse>();
         }
+
+        public async void RequestCode(PasswordRecoveryCode code)
+        {
+           await SitesURL.recoverPasswordAPI.PostJsonAsync(code);
+        }
+
+        public async Task<bool> SendCodeValidation(ValidateCode code)
+        {
+            var resultMessage = await SitesURL.validateCodeAPI.PostJsonAsync(code);
+
+            if (resultMessage.StatusCode == 204)
+            {
+                return true;
+            }
+
+            return false;
+        }
     }
 }

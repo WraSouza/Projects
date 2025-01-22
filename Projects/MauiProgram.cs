@@ -37,11 +37,13 @@ public static class MauiProgram
 		builder.Services.AddSingleton<LoginViewModel>();
 		builder.Services.AddSingleton<AddUserViewModel>();
         builder.Services.AddSingleton<InformEmailViewModel>();
+        builder.Services.AddSingleton<SendCodeValidationViewModel>();
 
         builder.Services.AddSingleton<MainPage>();
 		builder.Services.AddSingleton<LoginPage>();
 		builder.Services.AddSingleton<AddUserPage>();
         builder.Services.AddSingleton<InformEmailPage>();
+        builder.Services.AddSingleton<SendCodeValidationPage>();
 
         builder.Services.AddSingleton<IUserRepository, UserRepository>();
 		builder.Services.AddSingleton<ILoginRepository, LoginRepository>();
