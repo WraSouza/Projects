@@ -8,27 +8,29 @@
     <ShellContent
         Title="Main"
         ContentTemplate="{DataTemplate views:LoginPage}"
-        Route="MainPage"
+        Route="LoginPage"
         Shell.NavBarIsVisible="False" />
 
-    <FlyoutItem Title="Produtos">
+    <TabBar>
         <Tab>
             <ShellContent
-                Title="Produtos"
+                Title="Início"
                 ContentTemplate="{DataTemplate views:MainPage}"
                 Route="MainPage"
                 Shell.NavBarIsVisible="True" />
         </Tab>
-    </FlyoutItem>
 
-    <FlyoutItem Title="Controle Inventário">
+
+
         <Tab>
             <ShellContent
-                Title="Controle Inventário"
+                Title="Projetos"
                 ContentTemplate="{DataTemplate views:ProjectsPage}"
                 Route="ProjectsPage"
                 Shell.NavBarIsVisible="True" />
         </Tab>
-    </FlyoutItem>
+
+    </TabBar>
+
 
 </Shell>

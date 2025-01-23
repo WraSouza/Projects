@@ -20,12 +20,9 @@ namespace Projects.ViewModels
 
             repository.RequestCode(emailRecovery);
 
-            await Shell.Current.DisplayAlert("", "Se o E-mail Informado Estiver em Nosso Cadastro, um Código Será Enviado Para a Recuperação da Senha", "OK");
+            await Shell.Current.DisplayAlert("", "Se o E-mail Informado Estiver em Nosso Cadastro, Você Receberá Uma Nova Senha de Acesso.", "OK");
 
-            await Shell.Current.GoToAsync(nameof(SendCodeValidationPage));
-
-
-            //await Shell.Current.GoToAsync("..");
+            await Shell.Current.GoToAsync("..");
         }
         
     }

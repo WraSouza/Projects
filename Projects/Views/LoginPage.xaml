@@ -16,6 +16,8 @@
             </Style>
         </ResourceDictionary>
     </ContentPage.Resources>
+
+    <Grid>
     
     <StackLayout Padding="0,20,0,0">
         <Label
@@ -57,4 +59,6 @@
 
         
     </StackLayout>
+
+    </Grid>
 </ContentPage>

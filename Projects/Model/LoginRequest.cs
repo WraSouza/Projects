@@ -2,6 +2,10 @@
 {
     public class LoginRequest
     {
+        public LoginRequest()
+        {
+            
+        }
         public LoginRequest(string email, string password)
         {
             Email = email;

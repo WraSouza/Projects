@@ -6,6 +6,6 @@ namespace Projects.Repositories.Login
     {
         Task<LoginResponse> LoginAsync(LoginRequest loginRequest);
         void RequestCode(PasswordRecoveryCode email);
-        Task<bool> SendCodeValidation(ValidateCode code);
+        
     }
 }

@@ -33,7 +33,9 @@ namespace Projects.ViewModels
                 return;
             }
 
-            await Shell.Current.GoToAsync(nameof(MainPage));
+            Preferences.Set("Token",token.ToString());
+
+            await Shell.Current.GoToAsync($"//{nameof(MainPage)}");
 
         }
     }
