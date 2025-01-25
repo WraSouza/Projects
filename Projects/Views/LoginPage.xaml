@@ -3,62 +3,79 @@
     x:Class="Projects.Views.LoginPage"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:mvvm="clr-namespace:Projects.ViewModels"
     xmlns:material="http://schemas.enisn-projects.io/dotnet/maui/uraniumui/material"
+    xmlns:mvvm="clr-namespace:Projects.ViewModels"
     Title="LoginPage"
     x:DataType="mvvm:LoginViewModel">
 
     <ContentPage.Resources>
         <ResourceDictionary>
             <Style TargetType="Label">
-                <Setter Property="FontFamily" Value="MontserratSemibold"/>
-                <Setter Property="TextColor" Value="Black"/>
+                <Setter Property="FontFamily" Value="MontserratSemibold" />
+                <Setter Property="TextColor" Value="Black" />
             </Style>
         </ResourceDictionary>
     </ContentPage.Resources>
 
     <Grid>
-    
-    <StackLayout Padding="0,20,0,0">
-        <Label
-            HorizontalOptions="Center"
-            Text="Seja Bem vindo(a) ao"
-            VerticalOptions="Center" />
 
-        <Label
-            HorizontalOptions="Center"
-            Text="PROJECTS"
-            FontSize="50"
-            VerticalOptions="Center" />
+        <StackLayout Padding="0,20,0,0">
+            <Label
+                HorizontalOptions="Center"
+                Text="Seja Bem vindo(a) ao"
+                VerticalOptions="Center" />
 
-        <StackLayout  VerticalOptions="CenterAndExpand" Padding="10,0,10,20" Spacing="10">
-            <material:TextField Title="Email" Text="{Binding Email}" />
+            <Label
+                FontSize="50"
+                HorizontalOptions="Center"
+                Text="PROJECTS"
+                VerticalOptions="Center" />
 
-            <material:TextField Title="Senha" IsPassword="True" Text="{Binding Senha}"/>
+            <StackLayout
+                Padding="10,0,10,20"
+                Spacing="10"
+                VerticalOptions="CenterAndExpand">
+                <material:TextField Title="Email" Text="{Binding Email}" />
 
-            <Label Text="Esqueceu a Senha?" TextColor="Gray" HorizontalOptions="End" Margin="0,2,0,0">
-                <Label.GestureRecognizers>
-                    <TapGestureRecognizer Command="{Binding GoToInformEmailPageCommand}"/>
-                </Label.GestureRecognizers>
-            </Label>
+                <material:TextField
+                    Title="Senha"
+                    IsPassword="True"
+                    Text="{Binding Senha}" />
 
-            <Button StyleClass="ElevatedButton" Text="Acessar" FontFamily="MontserratSemibold" Margin="0,80,0,0" Command="{Binding LoginCommand}"/>
+                <Label
+                    Margin="0,2,0,0"
+                    HorizontalOptions="End"
+                    Text="Esqueceu a Senha?"
+                    TextColor="Gray">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding GoToInformEmailPageCommand}" />
+                    </Label.GestureRecognizers>
+                </Label>
+
+                <Button
+                    Margin="0,80,0,0"
+                    Command="{Binding LoginCommand}"
+                    FontFamily="MontserratSemibold"
+                    StyleClass="ElevatedButton"
+                    Text="Acessar" />
+
+            </StackLayout>
+
+            <HorizontalStackLayout
+                Padding="0,0,0,20"
+                HorizontalOptions="Center"
+                Spacing="5">
+                <Label Text="Não Tem Conta?" />
+
+                <Label Text="Clique Aqui" TextColor="Blue">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding GoToAddUserlPageCommand}" />
+                    </Label.GestureRecognizers>
+                </Label>
+            </HorizontalStackLayout>
+
 
         </StackLayout>
-
-        <HorizontalStackLayout Spacing="5" HorizontalOptions="Center" Padding="0,0,0,20">
-            <Label Text="Não Tem Conta?"/>
-
-            <Label Text="Clique Aqui"
-                   TextColor="Blue">
-                <Label.GestureRecognizers>
-                    <TapGestureRecognizer Command="{Binding GoToAddUserlPageCommand}"/>
-                </Label.GestureRecognizers>
-            </Label>
-        </HorizontalStackLayout>
-
-        
-    </StackLayout>
 
     </Grid>
 </ContentPage>

@@ -2,9 +2,17 @@
 
 public partial class MainPage : ContentPage
 {
-	public MainPage(MainViewModel viewModel)
+    private readonly MainViewModel _viewModel;
+
+    public MainPage(MainViewModel viewModel)
 	{
 		InitializeComponent();
-		BindingContext = viewModel;
+		BindingContext = _viewModel = viewModel;
 	}
+
+    protected override async void OnAppearing()
+    {
+        base.OnAppearing();
+        await _viewModel.GetAllProjects();
+    }
 }

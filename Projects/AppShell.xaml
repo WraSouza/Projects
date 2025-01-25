@@ -3,21 +3,22 @@
     x:Class="Projects.AppShell"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    Shell.FlyoutBehavior="Flyout"
+    Shell.NavBarIsVisible="False"
     xmlns:local="clr-namespace:Projects"
     xmlns:views="clr-namespace:Projects.Views">
     <ShellContent
         Title="Main"
         ContentTemplate="{DataTemplate views:LoginPage}"
-        Route="LoginPage"
-        Shell.NavBarIsVisible="False" />
+        Route="LoginPage"/>
 
     <TabBar>
         <Tab>
             <ShellContent
                 Title="Início"
                 ContentTemplate="{DataTemplate views:MainPage}"
-                Route="MainPage"
-                Shell.NavBarIsVisible="True" />
+                Icon="home.png"
+                Route="MainPage" />
         </Tab>
 
 
@@ -25,9 +26,17 @@
         <Tab>
             <ShellContent
                 Title="Projetos"
+                Icon="project.png"
                 ContentTemplate="{DataTemplate views:ProjectsPage}"
-                Route="ProjectsPage"
-                Shell.NavBarIsVisible="True" />
+                Route="ProjectsPage"/>
+        </Tab>
+
+        <Tab>
+            <ShellContent
+                Title="Perfil"
+                Icon="profile.png"
+                ContentTemplate="{DataTemplate views:ProfilePage}"
+                Route="ProfilePage"/>
         </Tab>
 
     </TabBar>
