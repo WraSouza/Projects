@@ -3,11 +3,127 @@
     x:Class="Projects.Views.ProjectsPage"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    Title="ProjectsPage">
+    xmlns:dx="http://schemas.devexpress.com/maui"
+    xmlns:model="clr-namespace:Projects.Model"
+    xmlns:mvvm="clr-namespace:Projects.ViewModels"
+    Title="ProjectsPage"
+    x:DataType="mvvm:ProjectsPageViewModel">
+
     <VerticalStackLayout>
-        <Label
-            HorizontalOptions="Center"
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" />
+        <CollectionView
+            EmptyView="Não Há Projetos Cadastrados"
+            HeightRequest="500"
+            ItemsSource="{Binding Projects}">
+
+            <CollectionView.ItemsLayout>
+                <GridItemsLayout Orientation="Vertical" Span="1" />
+            </CollectionView.ItemsLayout>
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Grid
+                        x:DataType="model:Project"
+                        ColumnSpacing="5"
+                        RowDefinitions="120"
+                        RowSpacing="15">
+                        <Border
+                            Margin="10,20,10,0"
+                            BackgroundColor="#F4F2F2"
+                            Stroke="Gainsboro"
+                            StrokeShape="RoundRectangle 5,5,5,5">
+                            <StackLayout Orientation="Horizontal">
+                                <VerticalStackLayout Padding="5" Spacing="5">
+                                    <Label
+                                        FontFamily="MontserratSemibold"
+                                        FontSize="15"
+                                        Text="Projeto"
+                                        TextColor="Black" />
+                                    <Label
+                                        FontFamily="MontserratSemibold"
+                                        FontSize="13"
+                                        Text="{Binding ProjectName}"
+                                        TextColor="#8A8888" />
+
+                                    <Grid ColumnDefinitions="*,*">
+
+                                        <StackLayout Grid.Column="0">
+                                            <Label
+                                                FontFamily="MontserratSemibold"
+                                                FontSize="15"
+                                                Text="Responsável:"
+                                                TextColor="Black" />
+
+                                            <Label
+                                                FontFamily="MontserratSemibold"
+                                                FontSize="13"
+                                                Text="{Binding UserName}"
+                                                TextColor="#8A8888" />
+                                        </StackLayout>
+
+                                        <StackLayout Grid.Column="1">
+                                            <Label
+                                                FontFamily="MontserratSemibold"
+                                                Margin="70,0,0,0"
+                                                FontSize="15"
+                                                HorizontalTextAlignment="Center"
+                                                Text="Prazo Final:"
+                                                TextColor="Black" />
+
+                                            <Label
+                                                FontFamily="MontserratSemibold"
+                                                FontSize="13"
+                                                Margin="50,0,0,0"
+                                                HorizontalTextAlignment="Center"
+                                                Text="{Binding DeadLine}"
+                                                TextColor="#8A8888" />
+
+                                        </StackLayout>
+
+                                    </Grid>
+
+                                </VerticalStackLayout>
+
+                            </StackLayout>
+
+                        </Border>
+
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+        <!--<dx:DXCollectionView ItemsSource="{Binding Projects}"
+                       Margin="{OnIdiom Phone='16,0,0,0', Tablet='71,0,0,0'}">
+            <dx:DXCollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Grid Padding="10, 8, 18, 7">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid Margin="0" Padding="0" ColumnSpacing="0" RowSpacing="0">
+
+                            <Ellipse Margin="0"
+                                 Fill="Transparent"
+                                 Stroke="LightGray"
+                                 StrokeThickness="1"
+                                 HeightRequest="50"
+                                 WidthRequest="50"
+                                 VerticalOptions="Center"
+                                 HorizontalOptions="Center">
+                            </Ellipse>
+                        </Grid>
+                        <StackLayout Grid.Column="1"
+                             Padding="18,1,18,7"
+                             Orientation="Vertical">
+                            <Label Text="{Binding ProjectName}"
+                           Margin="0,2"
+                           TextColor="#55575c"/>
+                            <Label Text="{Binding userName}"
+                               TextColor="#959aa0"/>
+                        </StackLayout>
+                    </Grid>
+                </DataTemplate>
+            </dx:DXCollectionView.ItemTemplate>
+        </dx:DXCollectionView>-->
     </VerticalStackLayout>
 </ContentPage>

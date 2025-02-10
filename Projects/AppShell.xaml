@@ -3,40 +3,38 @@
     x:Class="Projects.AppShell"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    Shell.FlyoutBehavior="Flyout"
-    Shell.NavBarIsVisible="False"
     xmlns:local="clr-namespace:Projects"
-    xmlns:views="clr-namespace:Projects.Views">
+    xmlns:views="clr-namespace:Projects.Views"
+    Shell.FlyoutBehavior="Flyout"
+    Shell.NavBarIsVisible="False">
+
     <ShellContent
         Title="Main"
-        ContentTemplate="{DataTemplate views:LoginPage}"
-        Route="LoginPage"/>
+        ContentTemplate="{DataTemplate views:ProjectsPage}"
+        Route="LoginPage" />
 
     <TabBar>
-        <Tab>
-            <ShellContent
-                Title="Início"
-                ContentTemplate="{DataTemplate views:MainPage}"
-                Icon="home.png"
-                Route="MainPage" />
+        <Tab
+            Title="Início"
+            Icon="home.png"
+            Route="MainPage">
+            <ShellContent ContentTemplate="{DataTemplate views:MainPage}" />
         </Tab>
 
 
 
-        <Tab>
-            <ShellContent
-                Title="Projetos"
-                Icon="project.png"
-                ContentTemplate="{DataTemplate views:ProjectsPage}"
-                Route="ProjectsPage"/>
+        <Tab
+            Title="Projetos"
+            Icon="project.png"
+            Route="ProjectsPage">
+            <ShellContent ContentTemplate="{DataTemplate views:ProjectsPage}" />
         </Tab>
 
-        <Tab>
-            <ShellContent
-                Title="Perfil"
-                Icon="profile.png"
-                ContentTemplate="{DataTemplate views:ProfilePage}"
-                Route="ProfilePage"/>
+        <Tab
+            Title="Perfil"
+            Icon="profile.png"
+            Route="ProfilePage">
+            <ShellContent ContentTemplate="{DataTemplate views:ProfilePage}" />
         </Tab>
 
     </TabBar>

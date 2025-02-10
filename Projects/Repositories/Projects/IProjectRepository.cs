@@ -4,7 +4,7 @@ namespace Projects.Repositories.Projects
 {
     public interface IProjectRepository
     {
-        Task<List<Project>> GetAllProjectAsync();
+        Task<List<ProjectResponse>> GetAllProjectAsync();
         Task<bool> AddProjectAsync(Project project);
 
     }

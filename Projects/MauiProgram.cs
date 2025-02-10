@@ -21,6 +21,8 @@ public static class MauiProgram
             })
             .UseMauiCommunityToolkit()
             .UseUraniumUI()
+            .UseDevExpress(useLocalization: false)
+            .UseDevExpressCollectionView()
             .ConfigureSyncfusionToolkit()
             .UseUraniumUIMaterial()
             .UseDevExpress()
@@ -43,6 +45,7 @@ public static class MauiProgram
         builder.Services.AddSingleton<AddUserViewModel>();
         builder.Services.AddSingleton<InformEmailViewModel>();
         builder.Services.AddSingleton<ProfileViewModel>();
+        builder.Services.AddSingleton<ProjectsPageViewModel>();
 
 
         builder.Services.AddSingleton<MainPage>();
@@ -50,6 +53,7 @@ public static class MauiProgram
         builder.Services.AddSingleton<AddUserPage>();
         builder.Services.AddSingleton<InformEmailPage>();
         builder.Services.AddSingleton<ProfilePage>();
+        builder.Services.AddSingleton<ProjectsPage>();
 
 
         builder.Services.AddSingleton<IUserRepository, UserRepository>();

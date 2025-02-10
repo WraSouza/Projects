@@ -1,9 +1,20 @@
+using Syncfusion.Maui.Toolkit.Carousel;
+
 namespace Projects.Views;
 
 public partial class ProjectsPage : ContentPage
 {
-	public ProjectsPage()
-	{
+    private readonly ProjectsPageViewModel _viewModel;
+
+    public ProjectsPage(ProjectsPageViewModel viewModel)
+    {
 		InitializeComponent();
-	}
+        BindingContext = _viewModel = viewModel;
+    }
+
+    protected override async void OnAppearing()
+    {
+        base.OnAppearing();
+        await _viewModel.GetAllProjects();
+    }
 }

@@ -1,6 +1,5 @@
 ﻿using Projects.Model;
 using Projects.Repositories.Projects;
-using System.Linq;
 
 namespace Projects.ViewModels;
 
@@ -30,27 +29,27 @@ public partial class MainViewModel(IProjectRepository repository) : ObservableOb
 
         try
         {
-            var allProject = await repository.GetAllProjectAsync();            
+            var allProject = await repository.GetAllProjectAsync();
 
             TotalProjects = allProject.Count().ToString();
 
             qtdyProjectsUpdated = allProject.Where(d => d.DeadLine >= DateTime.Now).Count();
 
-            qtdyDelaiedProject = allProject.Where(d => d.DeadLine < DateTime.Now).Count();    
+            qtdyDelaiedProject = allProject.Where(d => d.DeadLine < DateTime.Now).Count();
 
-            ProjectChartData chartDataUpdated = new ProjectChartData(updatedProject, qtdyProjectsUpdated);
+            ProjectChartData chartDataUpdated = new(updatedProject, qtdyProjectsUpdated);
 
             Projects.Add(chartDataUpdated);
 
             chartDataUpdated = new ProjectChartData(delaiedProject, qtdyDelaiedProject);
 
-            Projects.Add(chartDataUpdated);           
+            Projects.Add(chartDataUpdated);
         }
         catch (Exception ex)
         {
             Console.WriteLine("Stack Trace: " + ex.Message);
         }
 
-       
+
     }
 }

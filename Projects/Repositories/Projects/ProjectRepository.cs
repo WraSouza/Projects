@@ -11,12 +11,12 @@ namespace Projects.Repositories.Projects
             throw new NotImplementedException();
         }
 
-        public async Task<List<Project>> GetAllProjectAsync()
+        public async Task<List<ProjectResponse>> GetAllProjectAsync()
         {
-            List<Project> project = [];
+            List<ProjectResponse> project = [];
             try
             {
-                var allProjects = await SitesURL.projectAPI.GetJsonAsync<List<Project>>();
+                var allProjects = await SitesURL.projectAPI.GetJsonAsync<List<ProjectResponse>>();
                 return allProjects;
 
             }
