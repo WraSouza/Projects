@@ -55,8 +55,8 @@
         <Grid
             Margin="0,30,0,0"
             Padding="10"
-            ColumnSpacing="10"
             ColumnDefinitions="*,*"
+            ColumnSpacing="10"
             RowDefinitions="100">
             <Border
                 Grid.Column="0"

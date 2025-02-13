@@ -9,121 +9,119 @@
     Title="ProjectsPage"
     x:DataType="mvvm:ProjectsPageViewModel">
 
-    <VerticalStackLayout>
-        <CollectionView
-            EmptyView="Não Há Projetos Cadastrados"
-            HeightRequest="500"
-            ItemsSource="{Binding Projects}">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style TargetType="Label">
+                <Setter Property="FontFamily" Value="MontserratSemibold" />
+                <Setter Property="TextColor" Value="Black" />
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
 
-            <CollectionView.ItemsLayout>
-                <GridItemsLayout Orientation="Vertical" Span="1" />
-            </CollectionView.ItemsLayout>
-            <CollectionView.ItemTemplate>
-                <DataTemplate>
-                    <Grid
-                        x:DataType="model:Project"
-                        ColumnSpacing="5"
-                        RowDefinitions="120"
-                        RowSpacing="15">
-                        <Border
-                            Margin="10,20,10,0"
-                            BackgroundColor="#F4F2F2"
-                            Stroke="Gainsboro"
-                            StrokeShape="RoundRectangle 5,5,5,5">
-                            <StackLayout Orientation="Horizontal">
-                                <VerticalStackLayout Padding="5" Spacing="5">
-                                    <Label
-                                        FontFamily="MontserratSemibold"
-                                        FontSize="15"
-                                        Text="Projeto"
-                                        TextColor="Black" />
-                                    <Label
-                                        FontFamily="MontserratSemibold"
-                                        FontSize="13"
-                                        Text="{Binding ProjectName}"
-                                        TextColor="#8A8888" />
+    <Grid>
 
-                                    <Grid ColumnDefinitions="*,*">
+        
 
-                                        <StackLayout Grid.Column="0">
-                                            <Label
-                                                FontFamily="MontserratSemibold"
-                                                FontSize="15"
-                                                Text="Responsável:"
-                                                TextColor="Black" />
+            <CollectionView
+                x:Name="collectionView"
+                EmptyView="Não Há Projetos Cadastrados"
+                ItemsSource="{Binding Projects}">
 
-                                            <Label
-                                                FontFamily="MontserratSemibold"
-                                                FontSize="13"
-                                                Text="{Binding UserName}"
-                                                TextColor="#8A8888" />
-                                        </StackLayout>
+                <CollectionView.ItemsLayout>
+                    <GridItemsLayout Orientation="Vertical" Span="1" />
+                </CollectionView.ItemsLayout>
 
-                                        <StackLayout Grid.Column="1">
-                                            <Label
-                                                FontFamily="MontserratSemibold"
-                                                Margin="70,0,0,0"
-                                                FontSize="15"
-                                                HorizontalTextAlignment="Center"
-                                                Text="Prazo Final:"
-                                                TextColor="Black" />
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid
+                            x:DataType="model:Project"
+                            ColumnDefinitions="*,*"
+                            RowDefinitions="auto,auto,auto,auto,auto,auto">
 
-                                            <Label
-                                                FontFamily="MontserratSemibold"
-                                                FontSize="13"
-                                                Margin="50,0,0,0"
-                                                HorizontalTextAlignment="Center"
-                                                Text="{Binding DeadLine}"
-                                                TextColor="#8A8888" />
+                            <Label
+                                Grid.Column="0"
+                                FontSize="15"
+                                Text="Projeto"
+                                TextColor="Black" />
+                            <Label
+                                Grid.Row="1"
+                                FontSize="13"
+                                Text="{Binding ProjectName}"
+                                TextColor="#8A8888" />
 
-                                        </StackLayout>
+                            <Label
+                                Grid.Row="2"
+                                Grid.Column="0"
+                                FontSize="15"
+                                HorizontalOptions="Start"
+                                HorizontalTextAlignment="Center"
+                                Text="Responsável:"
+                                TextColor="Black" />
 
-                                    </Grid>
+                            <Label
+                                Grid.Row="3"
+                                Grid.Column="0"
+                                FontSize="13"
+                                Text="{Binding UserName}"
+                                TextColor="#8A8888" />
 
-                                </VerticalStackLayout>
+                            <Label
+                                Grid.Row="2"
+                                Grid.Column="1"
+                                Margin="70,0,0,0"
+                                FontSize="15"
+                                HorizontalTextAlignment="Center"
+                                Text="Prazo Final:"
+                                TextColor="Black" />
 
-                            </StackLayout>
+                            <Label
+                                Grid.Row="3"
+                                Grid.Column="1"
+                                Margin="50,0,0,0"
+                                FontSize="13"
+                                HorizontalTextAlignment="Center"
+                                Text="{Binding DeadLine}"
+                                TextColor="#8A8888" />
 
-                        </Border>
+                            <BoxView
+                                Grid.Row="3"
+                                Grid.ColumnSpan="2"
+                                HeightRequest="1" />
 
-                    </Grid>
-                </DataTemplate>
-            </CollectionView.ItemTemplate>
-        </CollectionView>
-
-        <!--<dx:DXCollectionView ItemsSource="{Binding Projects}"
-                       Margin="{OnIdiom Phone='16,0,0,0', Tablet='71,0,0,0'}">
-            <dx:DXCollectionView.ItemTemplate>
-                <DataTemplate>
-                    <Grid Padding="10, 8, 18, 7">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="*"/>
-                        </Grid.ColumnDefinitions>
-                        <Grid Margin="0" Padding="0" ColumnSpacing="0" RowSpacing="0">
-
-                            <Ellipse Margin="0"
-                                 Fill="Transparent"
-                                 Stroke="LightGray"
-                                 StrokeThickness="1"
-                                 HeightRequest="50"
-                                 WidthRequest="50"
-                                 VerticalOptions="Center"
-                                 HorizontalOptions="Center">
-                            </Ellipse>
+                            <Grid.GestureRecognizers>
+                                <TapGestureRecognizer
+                                    Command="{Binding Source={RelativeSource AncestorType={x:Type mvvm:ProjectsPageViewModel}}, Path=GoToDetailsProjectPageCommand}"
+                                    CommandParameter="{Binding .}"
+                                    NumberOfTapsRequired="1" />
+                            </Grid.GestureRecognizers>
                         </Grid>
-                        <StackLayout Grid.Column="1"
-                             Padding="18,1,18,7"
-                             Orientation="Vertical">
-                            <Label Text="{Binding ProjectName}"
-                           Margin="0,2"
-                           TextColor="#55575c"/>
-                            <Label Text="{Binding userName}"
-                               TextColor="#959aa0"/>
-                        </StackLayout>
-                    </Grid>
-                </DataTemplate>
-            </dx:DXCollectionView.ItemTemplate>
-        </dx:DXCollectionView>-->
-    </VerticalStackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+       
+
+        <Image
+            Margin="0,0,10,30"
+            HeightRequest="40"
+            HorizontalOptions="EndAndExpand"
+            Source="plus.png"
+            VerticalOptions="EndAndExpand">
+            <Image.GestureRecognizers>
+                <TapGestureRecognizer Command="{Binding GoToAddProjectPageCommand}" />
+            </Image.GestureRecognizers>
+        </Image>
+
+
+
+
+        <ActivityIndicator
+            Margin="0,50,0,0"
+            HorizontalOptions="Center"
+            IsRunning="{Binding GetAllProjectsCommand.IsRunning}"
+            IsVisible="{Binding GetAllProjectsCommand.IsRunning}"
+            VerticalOptions="Center"
+            Color="#0658D3" />
+
+    </Grid>
 </ContentPage>

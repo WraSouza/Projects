@@ -2,8 +2,10 @@ namespace Projects.Views;
 
 public partial class DetailsProjectPage : ContentPage
 {
-	public DetailsProjectPage()
+	public DetailsProjectPage(DetailsProjectViewModel viewModel)
 	{
 		InitializeComponent();
+
+		BindingContext = viewModel;
 	}
 }

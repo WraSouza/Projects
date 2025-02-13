@@ -1,12 +1,68 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Projects.Views.AddProjectPage"
-             Title="AddProjectPage">
-    <VerticalStackLayout>
-        <Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-    </VerticalStackLayout>
+<ContentPage
+    x:Class="Projects.Views.AddProjectPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:inputLayout="clr-namespace:Syncfusion.Maui.Toolkit.TextInputLayout;assembly=Syncfusion.Maui.Toolkit"
+    xmlns:material="http://schemas.enisn-projects.io/dotnet/maui/uraniumui/material"
+    xmlns:model="clr-namespace:Projects.Model"
+    xmlns:mvvm="clr-namespace:Projects.ViewModels"
+    Title="AddProjectPage"
+    x:DataType="mvvm:AddProjectViewModel">
+
+    <Grid>
+        <StackLayout>
+
+            <Label
+                Padding="10"
+                FontFamily="MontserratSemibold"
+                FontSize="25"
+                HorizontalTextAlignment="Center"
+                Text="Adicionar Projeto" />
+
+            <Image
+                BackgroundColor="White"
+                HeightRequest="180"
+                HorizontalOptions="Center"
+                Source="createproject.png" />
+
+            <StackLayout
+                Padding="10"
+                Spacing="30"
+                VerticalOptions="CenterAndExpand">
+
+                <material:TextField Title="Nome do Projeto" Text="{Binding ProjectName}" />
+
+                <inputLayout:SfTextInputLayout
+                    ContainerBackground="White"
+                    ContainerType="Outlined"
+                    HeightRequest="80"
+                    Hint="Selecione Responsável">
+                    <Picker
+                        FontFamily="MontserratSemibold"
+                        ItemsSource="{Binding Users}"
+                        SelectedItem="{Binding Owner}" />
+                </inputLayout:SfTextInputLayout>
+
+                <material:DatePickerField Title="Prazo Final" Date="{Binding DeadLine}" />
+
+                <Button
+                    Margin="0,80,0,0"
+                    Command="{Binding AddProjectCommand}"
+                    FontFamily="MontserratSemibold"
+                    StyleClass="ElevatedButton"
+                    Text="Cadastrar" />
+
+            </StackLayout>
+
+        </StackLayout>
+
+        <ActivityIndicator
+            Margin="0,50,0,0"
+            HorizontalOptions="Center"
+            IsRunning="{Binding AddProjectCommand.IsRunning}"
+            IsVisible="{Binding AddProjectCommand.IsRunning}"
+            VerticalOptions="Center"
+            Color="#0658D3" />
+    </Grid>
 </ContentPage>

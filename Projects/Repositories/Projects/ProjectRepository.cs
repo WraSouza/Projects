@@ -6,9 +6,26 @@ namespace Projects.Repositories.Projects
 {
     public class ProjectRepository : IProjectRepository
     {
-        public Task<bool> AddProjectAsync(Project project)
+        public async Task<bool> AddProjectAsync(ProjectInputModel project)
         {
-            throw new NotImplementedException();
+            //throw new NotImplementedException();
+            bool result = false;
+
+            try
+            {
+                var newProject = await SitesURL.projectAPI.PostJsonAsync(project);
+
+                if (newProject.ResponseMessage.IsSuccessStatusCode)
+                {
+                    result = true;
+                }
+
+            }catch(Exception ex)
+            {
+                Console.WriteLine(ex.ToString());   
+            }
+
+            return result;
         }
 
         public async Task<List<ProjectResponse>> GetAllProjectAsync()

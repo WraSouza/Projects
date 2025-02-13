@@ -46,6 +46,10 @@ public static class MauiProgram
         builder.Services.AddSingleton<InformEmailViewModel>();
         builder.Services.AddSingleton<ProfileViewModel>();
         builder.Services.AddSingleton<ProjectsPageViewModel>();
+        builder.Services.AddSingleton<AddProjectViewModel>();
+        builder.Services.AddSingleton<DetailsProjectViewModel>();
+
+
 
 
         builder.Services.AddSingleton<MainPage>();
@@ -54,6 +58,10 @@ public static class MauiProgram
         builder.Services.AddSingleton<InformEmailPage>();
         builder.Services.AddSingleton<ProfilePage>();
         builder.Services.AddSingleton<ProjectsPage>();
+        builder.Services.AddSingleton<AddProjectPage>();
+        builder.Services.AddSingleton<DetailsProjectPage>();
+
+
 
 
         builder.Services.AddSingleton<IUserRepository, UserRepository>();
